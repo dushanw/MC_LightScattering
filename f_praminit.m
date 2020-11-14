@@ -12,16 +12,17 @@ function pram = f_praminit()
   pram.useGpu     = 0;
   
   % Optical properties:
-  pram.mus        = 50;                                       % [cm^-1]   scattering coefficient of tissue
+  pram.mus        = 200;                                      % [cm^-1]   scattering coefficient of tissue
   pram.g          = 0.90;                                     % [AU]      anisotropy of scattering of tissue
   pram.nt         = 1.33;                                     % [AU]      refractive index of tissue  
-
+  pram.sl         = (1/pram.mus)*10*1e3;                      % [um]      sacttering length
+  
   % Source properties
   pram.z0_um      = -50;                                      % [um]
 
   % visualization & save parameters
   pram.savepath   = sprintf('./_results/%s/',datetime);
-  pram.fNameStem  = sprintf('sls-%d',-pram.z0_um/pram.mus);
+  pram.fNameStem  = sprintf('sls-%d',-pram.z0_um/pram.sl);
   pram.fs         = 24;                                       %           figure font size 
 
 end
