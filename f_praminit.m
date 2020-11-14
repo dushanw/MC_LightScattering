@@ -11,13 +11,19 @@ function pram = f_praminit()
   pram.dx         = 0.25;                                     % [um]      pixel size of sPSF  
   pram.useGpu     = 0;
   
-  % Optical properties:
+  % optical properties of the imaging system (optical PSF)
+  pram.lambda_ex  = 0.8;                                      % [um]      excitation wavelength
+  pram.lambda_em  = 0.606;                                    % [um]      emission wavelength
+  pram.NA         = 1;                                        % [AU]      numerical aperture of the objective
+  
+  % optical properties of the tissue
   pram.mus        = 200;                                      % [cm^-1]   scattering coefficient of tissue
   pram.g          = 0.90;                                     % [AU]      anisotropy of scattering of tissue
   pram.nt         = 1.33;                                     % [AU]      refractive index of tissue  
+  pram.nm         = 1.33;                                     % [AU]      refractive index of the medium (ex:water,air)  
   pram.sl         = (1/pram.mus)*10*1e3;                      % [um]      sacttering length
   
-  % Source properties
+  % source properties
   pram.z0_um      = -50;                                      % [um]
 
   % visualization & save parameters
@@ -26,3 +32,5 @@ function pram = f_praminit()
   pram.fs         = 24;                                       %           figure font size 
 
 end
+
+
