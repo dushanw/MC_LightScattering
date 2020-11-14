@@ -9,7 +9,7 @@ function pram = f_praminit()
 
   pram.Nx         = 200;                                      % [AU]      #pixels (in both x,y) in sPSF  
   pram.dx         = 0.25;                                     % [um]      pixel size of sPSF  
-
+  pram.useGpu     = 0;
   % Optical properties:
   pram.mus        = 50;                                       % [cm^-1]   scattering coefficient of tissue
   pram.g          = 0.90;                                     % [AU]      anisotropy of scattering of tissue

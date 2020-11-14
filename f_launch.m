@@ -14,4 +14,14 @@ function [x, y, z, ux, uy, uz, L] = f_launch(pram)
   uy    = sin(theta).*sin(psi);
   uz    = cos(theta); 
 
+  if pram.useGPU == 1
+    x   = gpuArray(x );
+    y   = gpuArray(y );
+    z   = gpuArray(z );
+    ux  = gpuArray(ux);
+    uy  = gpuArray(uy);
+    uz  = gpuArray(uz);
+    L   = gpuArray(L );    
+  end
+  
 end
