@@ -7,16 +7,16 @@ function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz)
 
     tic
     % Initial parameters 
-    alpha = asin(NA/Rindex); 
-    lambda = lambda/1e3;% convert to um
-    dy = dx; 
-    dz= dx; % Object space resolution [um]
+    alpha   = asin(NA/Rindex); 
+    lambda  = lambda/1e3;           % convert to um
+    dy      = dx; 
+    dz      = dx;                   % Object space resolution [um]
     
     x = dx*[-Nx/2:1:Nx/2-1]; 
     y = dy*[-Ny/2:1:Ny/2-1]; 
-    z = dz*[-Nz/2:1:Nz/2-1]; % Physical dimension of grids
+    z = dz*[-Nz/2:1:Nz/2-1];        % Physical dimension of grids
 
-    Ntheta = 50; % number of grid in polar angle
+    Ntheta = 50;                    % number of grid in polar angle
     dtheta = alpha/Ntheta;
     theta = [0:Ntheta-1]*dtheta;
  
