@@ -3,7 +3,7 @@
 % Efficient 3D APSF simulation using vectorial model of Debye theory
 % Ref: A. Martin, J. Micros, 225, 156-169, 2006.
 
-function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz)
+function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz,d_segment)
 
     tic
     % Initial parameters 
@@ -39,10 +39,13 @@ function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz)
     % fpr gpu parallelization 
     % segment size shold match to the maximum available memory in the GPU
     % start from a small number increase until the GPU memory error 
-    d_segment = 200;
-    segment_start = [1:d_segment:Nx];
-    segment_end = segment_start+d_segment-1;
-    segment_end(end) = Nx;
+    if isempty(d_segment)
+      d_segment         = 200;
+    end
+    
+    segment_start     = [1:d_segment:Nx];
+    segment_end       = segment_start+d_segment-1;
+    segment_end(end)  = Nx;
 
     for sNo = 1:length(segment_start)
         sNo
