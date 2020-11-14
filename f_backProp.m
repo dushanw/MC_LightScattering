@@ -1,6 +1,16 @@
 
 function [x_backProp, y_backProp, z_backProp, sPSF, sPSF_axis] = f_backProp(x,y,z,ux,uy,uz,atSurf,pram)
 
+  if pram.useGpu == 1
+    x       = gather(x     );
+    y       = gather(y     );
+    z       = gather(z     );
+    ux      = gather(ux    );
+    uy      = gather(uy    );
+    uz      = gather(uz    );
+    atSurf  = gather(atSurf);
+  end
+
   s_backProp  = pram.z0_um./uz(atSurf);
   
   x_backProp  = x(atSurf) + s_backProp .* ux(atSurf);
