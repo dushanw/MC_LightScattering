@@ -4,10 +4,11 @@ function pram = f_praminit()
   %% parameters
 
   % simulation parameters
-  pram.Nphotons   = 1E7;                                      % [AU]      set number of photons in simulation 
+  pram.Nphotons   = 1E5;                                      % [AU]      set number of photons in simulation 
   pram.NtimePts   = 1000;                                     % [AU]      time points during propergation  
-
-  pram.Nx         = 2000;                                      % [AU]      #pixels (in both x,y) in sPSF  
+  pram.Nsims      = 1;                                        % [AU]      #simulations
+  
+  pram.Nx         = 2001;                                     % [AU]      #pixels (in both x,y) in sPSF  
   pram.dx         = 0.05;                                     % [um]      pixel size of sPSF  
   pram.useGpu     = 0;
   

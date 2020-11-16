@@ -7,18 +7,21 @@ function main(pram)
   
   mkdir(pram.savepath);
 
-  [x, y, z, ux, uy, uz, L] = f_launch(pram);                  %           Launch photons at [x=0 y=0 z=pram.z0_um]
-  tic
-  for ii = 1:pram.NtimePts
-    ii
+%  parfor ii = 1:pram.Nsims
+    [x, y, z, ux, uy, uz, L] = f_launch(pram);                  %           Launch photons at [x=0 y=0 z=pram.z0_um]
+    tic
+    for jj = 1:pram.NtimePts
+      jj
 
-    [x, y, z, L, atSurf] = f_hop(x,y,z,ux,uy,uz,L,pram);      %           Hop photons to next position  
-    [ux, uy, uz]         = f_spin(ux,uy,uz,atSurf,pram);      %           Spin the photon trajectory due to scattering
-  end
-  toc
+      [x, y, z, L, atSurf] = f_hop(x,y,z,ux,uy,uz,L,pram);      %           Hop photons to next position  
+      [ux, uy, uz]         = f_spin(ux,uy,uz,atSurf,pram);      %           Spin the photon trajectory due to scattering
+    end
+    toc
 
   [x_backProp, y_backProp, z_backProp, sPSF, sPSF_axis] = f_backProp(x,y,z,ux,uy,uz,atSurf,pram);
-
+  
+  f_plotResults(sPSF,sPSF_axis,pram);
+  
   close all
   save([pram.savepath pram.fNameStem '_sPSF.mat'],'sPSF','sPSF_axis','pram');
 end
