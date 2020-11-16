@@ -14,6 +14,7 @@ function main(pram)
         delete(gcp('nocreate'))
         parpool(gpuDeviceCount);
       end
+    end
   end
   
   mkdir(pram.savepath);
@@ -25,8 +26,8 @@ function main(pram)
      L{ii} , atSurf{ii}]                        = f_launch(pram);               % Launch photons @[x=0 y=0 z=pram.z0_um]
     
     for jj = 1:pram.NtimePts
-      jj
-
+      fprintf('sim = %d | iter = %d\n',ii,jj)
+      
       [x{ii}, y{ii}, z{ii}, L{ii}, atSurf{ii}]  = f_hop(x{ii} ,y{ii} ,z{ii} ,...
                                                         ux{ii},uy{ii},uz{ii},...
                                                         L{ii} ,pram);           % Hop photons to next position  
