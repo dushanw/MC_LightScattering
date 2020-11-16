@@ -1,5 +1,5 @@
 
-function [x, y, z, ux, uy, uz, L] = f_launch(pram)
+function [x, y, z, ux, uy, uz, L, atSurf] = f_launch(pram)
 
   x     = zeros(pram.Nphotons,1);                             % [um]      cartesian coordinates  
   y     = zeros(pram.Nphotons,1);
@@ -24,4 +24,5 @@ function [x, y, z, ux, uy, uz, L] = f_launch(pram)
     L   = gpuArray(L );    
   end
   
+  atSurf = [];  
 end

@@ -1,21 +1,11 @@
 
-function [x_backProp, y_backProp, z_backProp, sPSF, sPSF_axis] = f_backProp(x,y,z,ux,uy,uz,atSurf,pram)
+function [x_backProp, y_backProp, z_backProp, sPSF, sPSF_axis] = f_backProp(x,y,z,ux,uy,uz,pram)
 
-  if pram.useGpu == 1
-    x       = gather(x     );
-    y       = gather(y     );
-    z       = gather(z     );
-    ux      = gather(ux    );
-    uy      = gather(uy    );
-    uz      = gather(uz    );
-    atSurf  = gather(atSurf);
-  end
-
-  s_backProp  = pram.z0_um./uz(atSurf);
+  s_backProp  = pram.z0_um./uz;
   
-  x_backProp  = x(atSurf) + s_backProp .* ux(atSurf);
-  y_backProp  = y(atSurf) + s_backProp .* uy(atSurf);
-  z_backProp  = z(atSurf) + s_backProp .* uz(atSurf);
+  x_backProp  = x + s_backProp .* ux;
+  y_backProp  = y + s_backProp .* uy;
+  z_backProp  = z + s_backProp .* uz;
 
   d_bin       = pram.dx;
   edge_val    = floor(pram.Nx/2) * d_bin;  
