@@ -6,8 +6,14 @@
 function main(pram)
 
   % setup parallel pool for gpu case
-  if pram.useGpu == 1
-    parpool(gpuDeviceCount);
+  if pram.useGpu == 1 
+    if isempty(gcp('nocreate'))
+      parpool(gpuDeviceCount);
+    else
+      if gcp('nocreate').NumWorkers~=gpuDeviceCount
+        delete(gcp('nocreate'))
+        parpool(gpuDeviceCount);
+      end
   end
   
   mkdir(pram.savepath);
