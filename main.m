@@ -51,7 +51,7 @@ function main(pram)
   f_plotResults(sPSF,sPSF_axis,pram);
   
   close all
-  save([pram.savepath pram.fNameStem '_sPSF.mat'],'sPSF','sPSF_axis','pram');
+  save([pram.savepath pram.fNameStem '_sPSF.mat'],'sPSF','sPSF_axis','x_backProp','y_backProp','z_backProp','pram');
 end
 
 
