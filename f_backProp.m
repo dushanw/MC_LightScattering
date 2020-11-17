@@ -8,11 +8,10 @@ function [x_backProp, y_backProp, z_backProp, sPSF, sPSF_axis] = f_backProp(x,y,
   z_backProp  = z + s_backProp .* uz;
 
   d_bin       = pram.dx;
-  edge_val    = floor(pram.Nx/2) * d_bin;  
-  [N c]       = hist3(cat(2,x_backProp,y_backProp),'edges',{-edge_val:d_bin:edge_val ...
-                                                            -edge_val:d_bin:edge_val ...
-                                                           });
-
+  [N c]       = hist3(cat(2,x_backProp,y_backProp),'Ctrs' ,{(-floor(pram.Nx/2):floor(pram.Nx/2))*d_bin ...
+                                                            (-floor(pram.Nx/2):floor(pram.Nx/2))*d_bin ...
+                                                           });                                                         
+                                                         
   sPSF        = N/sum(N(:));
   sPSF_axis   = c{1};
   
