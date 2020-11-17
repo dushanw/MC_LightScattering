@@ -8,7 +8,7 @@ function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz,d_segment)
     tic
     % Initial parameters 
     alpha   = asin(NA/Rindex); 
-    lambda  = lambda/1e3;           % convert to um
+    % lambda  = lambda/1e3;         % convert to um if in nm
     dy      = dx; 
     dz      = dx;                   % Object space resolution [um]
     
@@ -54,9 +54,9 @@ function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz,d_segment)
         Func1_gpu = gpuArray(Func1(segment_start(sNo):segment_end(sNo),:,:));
         Func2_gpu = gpuArray(Func2(segment_start(sNo):segment_end(sNo),:,:));
         THETA_gpu = gpuArray(THETA(segment_start(sNo):segment_end(sNo),:,:));
-        Phi_gpu = gpuArray(Phi(segment_start(sNo):segment_end(sNo),:,:));
+        Phi_gpu   = gpuArray(Phi(segment_start(sNo):segment_end(sNo),:,:));
 
-        parfor k=1:length(U)% use 4 workers for parallel pool. Otherwise too many data copies are needed.   
+        parfor k=1:length(U)% use 4 workers for parallel pool. Otherwise too many data copies are needed.
             % calculate intermediate functions that depends on z coordinates
             Func3_atThisU = exp((-1)*sqrt(-1)*U(k)*cos(THETA_gpu));
 
