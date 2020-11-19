@@ -16,7 +16,7 @@ function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz,d_segment)
     y = dy*[-Ny/2:1:Ny/2-1]; 
     z = dz*[-Nz/2:1:Nz/2-1];        % Physical dimension of grids
 
-    Ntheta = 200;                    % number of grid in polar angle, increase as Nx/dx increses
+    Ntheta = 400;                    % number of grid in polar angle, increase as Nx/dx increses
     dtheta = alpha/Ntheta;
     theta = [0:Ntheta-1]*dtheta;
  
