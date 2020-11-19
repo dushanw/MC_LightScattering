@@ -32,6 +32,9 @@ function pram = f_praminit()
   pram.fNameStem  = sprintf('sls-%d',-pram.z0_um/pram.sl);
   pram.fs         = 24;                                       %           figure font size 
 
+  % application dataset parameters
+  pram.datapath   = './_datasets/mnist/';
+  
 end
 
 
