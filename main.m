@@ -48,7 +48,8 @@ function main(pram)
   [x, y, z, ux, uy, uz]                                 = f_catAllSims(x,y,z,ux,uy,uz,pram);
   [x_backProp, y_backProp, z_backProp,sPSF, sPSF_axis]  = f_backProp  (x,y,z,ux,uy,uz,pram);
 
-  f_plotResults(sPSF,sPSF_axis,pram);
+  f_plotResults(sPSF,sPSF_axis,x_backProp,y_backProp,pram);
+  
   
   close all
   save([pram.savepath pram.fNameStem '_sPSF.mat'],'sPSF','sPSF_axis','x_backProp','y_backProp','z_backProp','pram');

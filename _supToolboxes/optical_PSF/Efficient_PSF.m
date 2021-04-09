@@ -7,7 +7,7 @@ function PSF_3D = Efficient_PSF(NA,Rindex,lambda,dx,Nx,Ny,Nz,d_segment)
 
     tic
     % Initial parameters 
-    alpha   = asin(NA/Rindex); 
+    alpha   = asin(NA/Rindex);      % NA = n . sin(alpha)
     % lambda  = lambda/1e3;         % convert to um if in nm
     dy      = dx; 
     dz      = dx;                   % Object space resolution [um]

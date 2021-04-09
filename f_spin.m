@@ -14,12 +14,13 @@ function [ux, uy, uz] = f_spin(ux,uy,uz,atSurf,pram)
   sintheta  = sqrt(1 - costheta.*costheta);
   psi       = rnd2 * 2*pi;
      
-  temp      = sqrt(1.0 - uz .* uz);
+  % **** for the following calculation see, Jacques_mcfluor2003.pdf page 32 ****
+  temp      = sqrt(1.0 - uz .* uz);   
   uxx       =  sintheta .* (ux .* uz .* cos(psi) - uy .* sin(psi)) ./ temp + ux .* costheta;
   uyy       =  sintheta .* (uy .* uz .* cos(psi) + ux .* sin(psi)) ./ temp + uy .* costheta;
   uzz       = -sintheta .* cos(psi) .* temp                                + uz .* costheta;
 
-  uxx(atSurf) = ux(atSurf);
+  uxx(atSurf) = ux(atSurf);           % replace the random direction with the original direction for atSurf photons
   uyy(atSurf) = uy(atSurf);
   uzz(atSurf) = uz(atSurf);
   

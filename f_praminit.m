@@ -3,7 +3,7 @@ function pram = f_praminit()
 
   %% parameters
 
-  % simulation parameters
+  % MC simulation parameters
   pram.Nphotons   = 1E5;                                      % [AU]      set number of photons in simulation 
   pram.NtimePts   = 1000;                                     % [AU]      time points during propergation  
   pram.Nsims      = 1;                                        % [AU]      #simulations
