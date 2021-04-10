@@ -38,8 +38,7 @@ function [x_backProp, y_backProp, z_backProp, sPSF, sPSF_axis] = f_backProp(x,y,
                                                             (-floor(pram.Nx/2):floor(pram.Nx/2))*d_bin ...
                                                            });                                                         
                                                          
-  sPSF       = N/sum(N(:));              % this is normalization to all escaped and in-range photons
-%  sPSF        = N/pram.Nphotons;          % this is normalizaiton to all simulated photons. So NA effect is in here.
-  sPSF_axis   = c{1};
-  
+%  sPSF       = N/sum(N(:));              % this is normalization to all escaped and in-range photons
+  sPSF        = N/pram.Nphotons;          % this is normalizaiton to all simulated photons. So NA effect is in here.
+  sPSF_axis   = c{1};  
 end
