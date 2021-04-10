@@ -16,15 +16,15 @@ function [x_backProp, y_backProp, z_backProp, sPSF, sPSF_axis] = f_backProp(x,y,
   z             = z(refracted);
   
   %% filter out the photons out side the objective NA [2021-04-09]
-%   sinAlpha      = uz ./ sqrt(ux.^2+uy.^2+uz.^2);
-%   inNA          = find(sinAlpha <= pram.NA/pram.nm);                        % by the definition of NA => NA = nm * sinAlpha_NA    
-%   
-%   ux            = ux(inNA);
-%   uy            = uy(inNA);
-%   uz            = uz(inNA);
-%   x             = x (inNA);
-%   y             = y (inNA);
-%   z             = z (inNA);
+  sinAlpha      = uz ./ sqrt(ux.^2+uy.^2+uz.^2);
+  inNA          = find(sinAlpha <= pram.NA/pram.nm);                        % by the definition of NA => NA = nm * sinAlpha_NA    
+  
+  ux            = ux(inNA);
+  uy            = uy(inNA);
+  uz            = uz(inNA);
+  x             = x (inNA);
+  y             = y (inNA);
+  z             = z (inNA);
   
   %% [2020-xx-xx]
   s_backProp  = pram.z0_um./uz;
